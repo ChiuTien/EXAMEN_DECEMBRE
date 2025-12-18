@@ -1,7 +1,7 @@
 <?php
 namespace app\modeles;
 
-use PDO;
+use PDO; 
 
 class Vehicule extends Model {
     private $id;
