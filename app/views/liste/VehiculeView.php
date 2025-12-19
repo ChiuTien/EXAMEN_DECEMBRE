@@ -21,10 +21,10 @@
             </thead>
             <tbody>
                 <?php foreach ($vehicules as $vehicule): ?>
-                    <tr>
+                    <tr style="cursor:pointer" onclick="window.location='/vehicules/<?= htmlspecialchars($vehicule['id'] ?? '') ?>'">
                         <td><?= htmlspecialchars($vehicule['id'] ?? '') ?></td>
                         <td><?= htmlspecialchars($vehicule['matricule'] ?? '') ?></td>
-                        <td><?= htmlspecialchars($vehicule['carburant'] ?? '') ?></td>
+                        <td><?= htmlspecialchars($vehicule['idCarburant'] ?? '') ?></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

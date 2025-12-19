@@ -37,5 +37,28 @@ class VehiculeController {
             'vehiculeData' => $data        // Données brutes
         ]);
     }
+
+    //Creation Vehicule
+    public function createVehicule($matricule, $idCarburant) {
+        $vehiculeModel = new Vehicule();
+
+        $vehiculeModel->setMatricule($matricule);
+        $vehiculeModel->setIdCarburant($idCarburant);
+
+        $vehiculeModel->save();
+
+        $this->listVehicules();
+    }
+
+    // Suppression Vehicule
+    public function deleteVehicule($id) {
+        $vehiculeModel = new Vehicule();
+        $data = $vehiculeModel->getById($id);
+        if (!$data) {
+            Flight::halt(404, 'Véhicule non trouvé');
+        }
+        $vehiculeModel->delete();
+        $this->listVehicules();
+    }
 }
 ?>
