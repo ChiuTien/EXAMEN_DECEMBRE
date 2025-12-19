@@ -1,7 +1,7 @@
 <?php
 
 use app\controllers\ApiExampleController;
-use app\controllers\ProduitController;
+use app\controllers\VehiculeController;
 use app\middlewares\SecurityHeadersMiddleware;
 use flight\Engine;
 use flight\net\Router;
@@ -20,6 +20,11 @@ $router->group('', function(Router $router) use ($app) {
 
 	$router->get('/hello-world/@name', function($name) {
 		echo '<h1>Hello world! Oh hey '.$name.'!</h1>';
+	});
+
+	$router->group('/vehicules', function() use ($router) {
+		$router->get('', [ VehiculeController::class, 'listVehicules' ]);
+		$router->get('/@id:[0-9]+', [ VehiculeController::class, 'viewVehicule' ]);
 	});
 
 	$router->group('/api', function() use ($router) {
