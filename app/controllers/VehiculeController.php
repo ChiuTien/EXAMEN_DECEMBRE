@@ -1,6 +1,8 @@
 <?php 
 
 namespace app\controllers;
+
+use Flight;
 use app\modeles\Vehicule;
 
 class VehiculeController {

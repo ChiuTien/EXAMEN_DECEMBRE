@@ -1,6 +1,5 @@
 <?php
 
-use app\controllers\ApiExampleController;
 use app\controllers\VehiculeController;
 use app\middlewares\SecurityHeadersMiddleware;
 use flight\Engine;
@@ -27,10 +26,4 @@ $router->group('', function(Router $router) use ($app) {
 		$router->get('/@id:[0-9]+', [ VehiculeController::class, 'viewVehicule' ]);
 	});
 
-	$router->group('/api', function() use ($router) {
-		$router->get('/users', [ ApiExampleController::class, 'getUsers' ]);
-		$router->get('/users/@id:[0-9]', [ ApiExampleController::class, 'getUser' ]);
-		$router->post('/users/@id:[0-9]', [ ApiExampleController::class, 'updateUser' ]);
-	});
-	
 }, [ SecurityHeadersMiddleware::class ]);
